@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
+    final int TEMPORARY_EMP_TAX = 15;
+    final int CONTRACT_EMP_TAX = 18;
+    final int FULLTIME_EMP_TAX = 20;
+    final int FULLTIME_EMP_BENEFIT = 10;
     private String employeeName;
     private int employeeId;
     private char employeeType;
@@ -51,11 +55,11 @@ public class Employee {
     public double getEmployeeWageAfterTax() {
         double wage;
         if(employeeType == 'T') {
-            wage = employeeWage - (employeeWage * 15 / 100);
+            wage = employeeWage - (employeeWage * TEMPORARY_EMP_TAX / 100);
         } else if(employeeType == 'C') {
-            wage = employeeWage - (employeeWage * 18 / 100);
+            wage = employeeWage - (employeeWage * CONTRACT_EMP_TAX / 100);
         } else {
-            wage = employeeWage - (employeeWage * 30 / 100);
+            wage = employeeWage - (employeeWage * (FULLTIME_EMP_BENEFIT + FULLTIME_EMP_TAX) / 100);
         }
         return wage;
     }
