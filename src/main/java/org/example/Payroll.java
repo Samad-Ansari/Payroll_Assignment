@@ -49,7 +49,6 @@ public class Payroll {
 
     }
 
-
     void finalPrinter(){
         System.out.println("Employee name, employee ID, Work Type, Total Wage before tax, Total Wage after tax");
         for(Employee employee : employees.employees){
@@ -89,7 +88,7 @@ class Entries {
                 validators.validateName(employeeName);
                 valid = true;
             } catch (ExceptionRaiser e){
-                System.out.println(e.getMessage());
+                System.out.println("\t => " + e.getMessage() + " !!");
             }
         }
         return employeeName;
@@ -108,9 +107,9 @@ class Entries {
             }
             catch(Exception e) {
                 if(e.getMessage() != null){
-                    System.out.println(e.getMessage());
+                    System.out.println("\t => " + e.getMessage());
                 } else {
-                    System.out.println("Invalid Entry !");
+                    System.out.println("\t => Invalid Entry !");
                 }
             }
         }
@@ -127,7 +126,7 @@ class Entries {
                 valid = true;
             }
             catch(Exception e){
-                System.out.println(e.getMessage());
+                System.out.println("\t => " + e.getMessage() + " !!");
             }
         }
         return employeeType;
@@ -139,12 +138,17 @@ class Entries {
         while(!valid){
             System.out.print("Please enter the employee’s wage? : ");
             try {
+                scanner = new Scanner(System.in);
                 employeeWage = scanner.nextDouble();
                 validators.validateWage(employeeWage, employeeType);
                 valid = true;
             }
             catch(Exception e){
-                System.out.println(e.getMessage());
+                if(e.getMessage() != null){
+                    System.out.println("\t => " + e.getMessage());
+                } else {
+                    System.out.println("\t => Invalid Entry !");
+                }
             }
         }
         return employeeWage;
