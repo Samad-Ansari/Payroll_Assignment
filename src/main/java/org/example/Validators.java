@@ -46,10 +46,3 @@ class Validators {
         return count;
     }
 }
-
-class ExceptionRaiser extends Exception {
-    public ExceptionRaiser(String str){
-        super(str);
-
-    }
-}
